@@ -1,4 +1,4 @@
-package com.udemy.aristidev
+package com.udemy.aristidev.layouts
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
