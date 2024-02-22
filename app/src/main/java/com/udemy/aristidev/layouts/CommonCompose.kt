@@ -21,3 +21,9 @@ fun MyCustomSpace(text: String = "", modifierParam: Modifier = Modifier.height(2
         .background(Color.Cyan))
     Spacer(modifier = modifierParam)
 }
+
+@Composable
+fun MyCustomDescription(text: String) {
+    Text(text)
+    Spacer(modifier = Modifier.height(20.dp))
+}

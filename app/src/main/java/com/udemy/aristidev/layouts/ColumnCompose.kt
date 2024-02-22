@@ -21,9 +21,11 @@ import com.udemy.aristidev.ui.theme.UdemyAristiDevTheme
  */
 @Composable
 fun MyColumnsWithWeight() {
-    Text("This is not going to be able to see it due to when we're working with weight, " +
-            "the space must be to only one screen without scroll state. Also, it's important to " +
-            "not have modifiers of weight in the compose functions inside this one.")
+    Text(
+        "This is not going to be able to see it due to when we're working with weight, " +
+                "the space must be to only one screen without scroll state. Also, it's important to " +
+                "not have modifiers of weight in the compose functions inside this one."
+    )
     Column {
         Text(
             "Example with weight. This one only have 1f", modifier = Modifier
@@ -48,25 +50,34 @@ fun MyColumnsWithWeight() {
 
 @Composable
 fun MyColumnsWithoutWeight() {
-    //Put Every Text only in the space by default. It's the wrap content
-    Column {
-        Text("Text 1")
-        Text("Text 2")
-        Text("Text 3")
-    }
-    Spacer(modifier = Modifier.height(50.dp))
-    Column {
+    MyCustomDescription(
+        text = "This section contain 3 Text from compose. They're not using weight and the container is another" +
+                "Column inside that modify the height to 50dp and add a vertical scroll with remember scroll state:"
+    )
+    Column(
+        modifier = Modifier
+            .height(50.dp)
+            .verticalScroll(rememberScrollState())
+    ) {
         Text("Text 1")
         Text("Text 2")
         Text("Text 3")
     }
 }
 
-@Preview(showBackground = true)
 @Composable
-fun ColumnDefaultPreview() {
-    UdemyAristiDevTheme {
-        MyColumnMain()
+fun MyColumnsSpaceBetween100Dp() {
+    MyCustomDescription(
+        text = "SpaceBetween align all the text inside the column taking in mind " +
+                "the size of the container and adding the space automatically between each other"
+    )
+    Column(
+        modifier = Modifier
+            .height(100.dp)
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.SpaceBetween
+    ) {
+        ExampleText()
     }
 }
 
@@ -80,11 +91,22 @@ fun MyColumnMain() {
         MyColumnsWithWeight()
         MyCustomSpace("Columns without Weight")
         MyColumnsWithoutWeight()
-        MyColumnsWithoutWeight()
-        MyColumnsWithoutWeight()
-        MyColumnsWithoutWeight()
-        MyColumnsWithoutWeight()
-        MyColumnsWithoutWeight()
-        MyColumnsWithoutWeight()
+        MyCustomSpace("Columns/No-Weight/VerArr = SpaceBetweem/Height = 100dp")
+        MyColumnsSpaceBetween100Dp()
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ColumnDefaultPreview() {
+    UdemyAristiDevTheme {
+        MyColumnMain()
+    }
+}
+
+@Composable
+fun ExampleText() {
+    Text("Text 1")
+    Text("Text 2")
+    Text("Text 3")
 }
