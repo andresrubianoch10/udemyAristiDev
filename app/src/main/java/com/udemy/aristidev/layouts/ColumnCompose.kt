@@ -82,17 +82,31 @@ fun MyColumnsSpaceBetween100Dp() {
 }
 
 @Composable
+fun MyColumnsSpaceAround() {
+    MyCustomDescription(text = "This sections show 3 components that are together. This " +
+            "is how Space around works. It was necessary to remove the static size to make it" +
+            "compatible with this functionality")
+    Column(
+        verticalArrangement = Arrangement.SpaceAround
+    ) {
+        ExampleText()
+    }
+}
+
+@Composable
 fun MyColumnMain() {
     Column(
         modifier = Modifier
             .verticalScroll(rememberScrollState())
     ) {
+        MyCustomSpace("Columns/No-Weight/VerArr = SpaceAround")
+        MyColumnsSpaceAround()
+        MyCustomSpace("Columns/No-Weight/VerArr = SpaceBetweem/Height = 100dp")
+        MyColumnsSpaceBetween100Dp()
         MyCustomSpace("Columns with Weight")
         MyColumnsWithWeight()
         MyCustomSpace("Columns without Weight")
         MyColumnsWithoutWeight()
-        MyCustomSpace("Columns/No-Weight/VerArr = SpaceBetweem/Height = 100dp")
-        MyColumnsSpaceBetween100Dp()
     }
 }
 
