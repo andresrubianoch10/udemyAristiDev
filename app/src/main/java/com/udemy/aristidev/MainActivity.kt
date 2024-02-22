@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.udemy.aristidev.layouts.MyBoxMain
+import com.udemy.aristidev.layouts.MyColumnMain
 import com.udemy.aristidev.ui.theme.UdemyAristiDevTheme
 
 class MainActivity : ComponentActivity() {
@@ -23,7 +24,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    MyBoxMain()
+                    MyColumnMain()
                 }
             }
         }

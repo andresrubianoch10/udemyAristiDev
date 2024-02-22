@@ -21,6 +21,9 @@ import com.udemy.aristidev.ui.theme.UdemyAristiDevTheme
  */
 @Composable
 fun MyColumnsWithWeight() {
+    Text("This is not going to be able to see it due to when we're working with weight, " +
+            "the space must be to only one screen without scroll state. Also, it's important to " +
+            "not have modifiers of weight in the compose functions inside this one.")
     Column {
         Text(
             "Example with weight. This one only have 1f", modifier = Modifier
@@ -52,11 +55,7 @@ fun MyColumnsWithoutWeight() {
         Text("Text 3")
     }
     Spacer(modifier = Modifier.height(50.dp))
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(rememberScrollState()), verticalArrangement = Arrangement.SpaceBetween
-    ) {
+    Column {
         Text("Text 1")
         Text("Text 2")
         Text("Text 3")
@@ -73,17 +72,19 @@ fun ColumnDefaultPreview() {
 
 @Composable
 fun MyColumnMain() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.weight(1f)) {
-            MyColumnsWithWeight()
-        }
-        Spacer(
-            modifier = Modifier
-                .height(40.dp)
-                .background(Color.Green)
-        )
-        Column(modifier = Modifier.weight(1f)) {
-            MyColumnsWithoutWeight()
-        }
+    Column(
+        modifier = Modifier
+            .verticalScroll(rememberScrollState())
+    ) {
+        MyCustomSpace("Columns with Weight")
+        MyColumnsWithWeight()
+        MyCustomSpace("Columns without Weight")
+        MyColumnsWithoutWeight()
+        MyColumnsWithoutWeight()
+        MyColumnsWithoutWeight()
+        MyColumnsWithoutWeight()
+        MyColumnsWithoutWeight()
+        MyColumnsWithoutWeight()
+        MyColumnsWithoutWeight()
     }
 }
